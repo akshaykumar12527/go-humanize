@@ -31,12 +31,12 @@ var magnitudes = []struct {
 	divby  int64
 }{
 	{1, "now", 1},
-	{2, "1 second %s", 1},
-	{Minute, "%d seconds %s", 1},
-	{2 * Minute, "1 minute %s", 1},
-	{Hour, "%d minutes %s", Minute},
-	{2 * Hour, "1 hour %s", 1},
-	{Day, "%d hours %s", Hour},
+	{2, "1 sec %s", 1},
+	{Minute, "%d sec %s", 1},
+	{2 * Minute, "1 min %s", 1},
+	{Hour, "%d mins %s", Minute},
+	{2 * Hour, "1 hr %s", 1},
+	{Day, "%d hrs %s", Hour},
 	{2 * Day, "1 day %s", 1},
 	{Week, "%d days %s", Day},
 	{2 * Week, "1 week %s", 1},
