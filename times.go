@@ -47,7 +47,7 @@ var magnitudes = []struct {
 	// {18 * Month, "1 year %s", 1},
 	// {2 * Year, "2 years %s", 1},
 	// {LongTime, "%d years %s", Year},
-	{math.MaxInt64, "a few days %s", 1},
+	{math.MaxInt64, "few days %s", 1},
 }
 
 // RelTime formats a time into a relative string.
