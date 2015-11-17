@@ -38,15 +38,16 @@ var magnitudes = []struct {
 	{2 * Hour, "1 hr %s", 1},
 	{Day, "%d hrs %s", Hour},
 	{2 * Day, "1 day %s", 1},
-	{Week, "%d days %s", Day},
-	{2 * Week, "1 week %s", 1},
-	{Month, "%d weeks %s", Week},
-	{2 * Month, "1 month %s", 1},
-	{Year, "%d months %s", Month},
-	{18 * Month, "1 year %s", 1},
-	{2 * Year, "2 years %s", 1},
-	{LongTime, "%d years %s", Year},
-	{math.MaxInt64, "a long while %s", 1},
+	// {8 * Day, "4 days %s", 1},
+	{4 * Day, "%d days %s", Day},
+	// {2 * Week, "1 week %s", 1},
+	// {Month, "%d weeks %s", Week},
+	// {2 * Month, "1 month %s", 1},
+	// {Year, "%d months %s", Month},
+	// {18 * Month, "1 year %s", 1},
+	// {2 * Year, "2 years %s", 1},
+	// {LongTime, "%d years %s", Year},
+	{math.MaxInt64, "a few days %s", 1},
 }
 
 // RelTime formats a time into a relative string.
@@ -65,8 +66,9 @@ func RelTime(a, b time.Time, albl, blbl string) string {
 		lbl = blbl
 		diff = a.Unix() - b.Unix()
 	}
-
+	fmt.Println(len(magnitudes))
 	n := sort.Search(len(magnitudes), func(i int) bool {
+		fmt.Println(i, " ", magnitudes[i].d, " ", diff)
 		return magnitudes[i].d > diff
 	})
 
@@ -74,6 +76,7 @@ func RelTime(a, b time.Time, albl, blbl string) string {
 	args := []interface{}{}
 	escaped := false
 	for _, ch := range mag.format {
+		fmt.Println(string(ch))
 		if escaped {
 			switch ch {
 			case '%':
